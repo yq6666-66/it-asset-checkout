@@ -1,0 +1,100 @@
+@model CheckoutListViewModel
+@{
+    ViewData["Title"] = "Checkouts";
+    var sorts = new (string Value, string Label)[]
+    {
+        ("checkout", "Checkout date"),
+        ("asset", "Asset"),
+        ("staff", "Staff"),
+        ("due", "Due date"),
+        ("return", "Return date")
+    };
+}
+
+<div class="page-heading">
+    <h1>Checkouts</h1>
+    <a class="button" asp-action="Create">New checkout</a>
+</div>
+
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+
+<form method="get" class="filters">
+    <label>
+        Search
+        <input type="search" name="q" value="@Model.Query" placeholder="Asset, staff, note, open, yyyy-MM-dd" />
+    </label>
+    <label>
+        Sort
+        <select name="sort">
+            @foreach (var item in sorts)
+            {
+                if (Model.Sort == item.Value)
+                {
+                    <option value="@item.Value" selected>@item.Label</option>
+                }
+                else
+                {
+                    <option value="@item.Value">@item.Label</option>
+                }
+            }
+        </select>
+    </label>
+    <button type="submit" class="button">Apply</button>
+    @if (!string.IsNullOrEmpty(Model.Query) || Model.Sort != "checkout")
+    {
+        <a asp-action="Index">Clear</a>
+    }
+</form>
+
+@if (Model.Checkouts.Count == 0)
+{
+    <p>@(string.IsNullOrEmpty(Model.Query) ? "No checkouts yet." : "No checkouts match that search.")</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset</th>
+                    <th>Staff member</th>
+                    <th>Checkout date</th>
+                    <th>Due date</th>
+                    <th>Return date</th>
+                    <th>Note</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var checkout in Model.Checkouts)
+                {
+                    <tr>
+                        <td>@checkout.Asset?.TagNo @checkout.Asset?.Name</td>
+                        <td>@checkout.Staff?.StaffCode @checkout.Staff?.FullName</td>
+                        <td>@checkout.CheckoutAt.ToString("yyyy-MM-dd")</td>
+                        <td>@checkout.DueAt.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            @if (checkout.ReturnAt is null)
+                            {
+                                <span class="status status-open">Open</span>
+                            }
+                            else
+                            {
+                                @checkout.ReturnAt.Value.ToString("yyyy-MM-dd")
+                            }
+                        </td>
+                        <td>@checkout.Note</td>
+                        <td class="actions">
+                            <a asp-action="Details" asp-route-id="@checkout.Id">Details</a>
+                            <a asp-action="Edit" asp-route-id="@checkout.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@checkout.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

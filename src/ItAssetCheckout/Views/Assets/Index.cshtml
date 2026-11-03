@@ -1,0 +1,90 @@
+@model AssetListViewModel
+@{
+    ViewData["Title"] = "Assets";
+    var sorts = new (string Value, string Label)[]
+    {
+        ("tag", "Tag number"),
+        ("name", "Name"),
+        ("category", "Category"),
+        ("status", "Status")
+    };
+}
+
+<div class="page-heading">
+    <h1>Assets</h1>
+    <a class="button" asp-action="Create">New asset</a>
+</div>
+
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+
+<form method="get" class="filters">
+    <label>
+        Search
+        <input type="search" name="q" value="@Model.Query" placeholder="Tag, name, category, status" />
+    </label>
+    <label>
+        Sort
+        <select name="sort">
+            @foreach (var item in sorts)
+            {
+                if (Model.Sort == item.Value)
+                {
+                    <option value="@item.Value" selected>@item.Label</option>
+                }
+                else
+                {
+                    <option value="@item.Value">@item.Label</option>
+                }
+            }
+        </select>
+    </label>
+    <button type="submit" class="button">Apply</button>
+    @if (!string.IsNullOrEmpty(Model.Query) || Model.Sort != "tag")
+    {
+        <a asp-action="Index">Clear</a>
+    }
+</form>
+
+@if (Model.Assets.Count == 0)
+{
+    <p>@(string.IsNullOrEmpty(Model.Query) ? "No assets yet." : "No assets match that search.")</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tag number</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Purchase date</th>
+                    <th class="num">Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in Model.Assets)
+                {
+                    <tr>
+                        <td>@asset.TagNo</td>
+                        <td>@asset.Name</td>
+                        <td>@asset.Category</td>
+                        <td><span class="status">@asset.Status</span></td>
+                        <td>@asset.PurchaseDate.ToString("yyyy-MM-dd")</td>
+                        <td class="num">@asset.Value.ToString("0.00")</td>
+                        <td class="actions">
+                            <a asp-action="Details" asp-route-id="@asset.Id">Details</a>
+                            <a asp-action="Edit" asp-route-id="@asset.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@asset.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

@@ -1,0 +1,37 @@
+@model Checkout
+
+<div class="field">
+    <label asp-for="AssetId"></label>
+    <select asp-for="AssetId" asp-items="ViewBag.AssetChoices">
+        <option value="">Select an asset</option>
+    </select>
+    <span asp-validation-for="AssetId"></span>
+</div>
+<div class="field">
+    <label asp-for="StaffId"></label>
+    <select asp-for="StaffId" asp-items="ViewBag.StaffChoices">
+        <option value="">Select a staff member</option>
+    </select>
+    <span asp-validation-for="StaffId"></span>
+</div>
+<div class="field">
+    <label asp-for="CheckoutAt"></label>
+    <input asp-for="CheckoutAt" type="date" />
+    <span asp-validation-for="CheckoutAt"></span>
+</div>
+<div class="field">
+    <label asp-for="DueAt"></label>
+    <input asp-for="DueAt" type="date" />
+    <span asp-validation-for="DueAt"></span>
+</div>
+<div class="field">
+    <label asp-for="ReturnAt"></label>
+    <input asp-for="ReturnAt" type="date" />
+    <span class="hint">Leave blank while the asset is still out.</span>
+    <span asp-validation-for="ReturnAt"></span>
+</div>
+<div class="field">
+    <label asp-for="Note"></label>
+    <textarea asp-for="Note" rows="3"></textarea>
+    <span asp-validation-for="Note"></span>
+</div>

@@ -1,0 +1,86 @@
+@model StaffListViewModel
+@{
+    ViewData["Title"] = "Staff";
+}
+
+<div class="page-heading">
+    <h1>Staff</h1>
+    <a class="button" asp-action="Create">New staff member</a>
+</div>
+
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+
+<form method="get" class="filters">
+    <label>
+        Search
+        <input type="search" name="q" value="@Model.Query" placeholder="Code, name, email, department" />
+    </label>
+    <label>
+        Sort
+        <select name="sort">
+            @if (Model.Sort == "name")
+            {
+                <option value="code">Staff code</option>
+                <option value="name" selected>Name</option>
+                <option value="department">Department</option>
+            }
+            else if (Model.Sort == "department")
+            {
+                <option value="code">Staff code</option>
+                <option value="name">Name</option>
+                <option value="department" selected>Department</option>
+            }
+            else
+            {
+                <option value="code" selected>Staff code</option>
+                <option value="name">Name</option>
+                <option value="department">Department</option>
+            }
+        </select>
+    </label>
+    <button type="submit" class="button">Apply</button>
+    @if (!string.IsNullOrEmpty(Model.Query) || Model.Sort != "code")
+    {
+        <a asp-action="Index">Clear</a>
+    }
+</form>
+
+@if (Model.Staff.Count == 0)
+{
+    <p>@(string.IsNullOrEmpty(Model.Query) ? "No staff yet." : "No staff match that search.")</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Staff code</th>
+                    <th>Full name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in Model.Staff)
+                {
+                    <tr>
+                        <td>@person.StaffCode</td>
+                        <td>@person.FullName</td>
+                        <td>@person.Email</td>
+                        <td>@person.Department</td>
+                        <td class="actions">
+                            <a asp-action="Details" asp-route-id="@person.Id">Details</a>
+                            <a asp-action="Edit" asp-route-id="@person.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

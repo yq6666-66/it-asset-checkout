@@ -1,0 +1,34 @@
+@model Asset
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="page-heading">
+    <h1>@Model.Name</h1>
+    <a class="button" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>
+
+<dl class="detail">
+    <div>
+        <dt>Tag number</dt>
+        <dd>@Model.TagNo</dd>
+    </div>
+    <div>
+        <dt>Category</dt>
+        <dd>@Model.Category</dd>
+    </div>
+    <div>
+        <dt>Status</dt>
+        <dd>@Model.Status</dd>
+    </div>
+    <div>
+        <dt>Purchase date</dt>
+        <dd>@Model.PurchaseDate.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Value</dt>
+        <dd>@Model.Value.ToString("0.00")</dd>
+    </div>
+</dl>
+
+<p><a asp-action="Index">Back to assets</a></p>
