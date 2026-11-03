@@ -1,0 +1,26 @@
+@model Staff
+@{
+    ViewData["Title"] = Model.FullName;
+}
+
+<div class="page-heading">
+    <h1>@Model.FullName</h1>
+    <a class="button" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>
+
+<dl class="detail">
+    <div>
+        <dt>Staff code</dt>
+        <dd>@Model.StaffCode</dd>
+    </div>
+    <div>
+        <dt>Email</dt>
+        <dd>@Model.Email</dd>
+    </div>
+    <div>
+        <dt>Department</dt>
+        <dd>@Model.Department</dd>
+    </div>
+</dl>
+
+<p><a asp-action="Index">Back to staff</a></p>

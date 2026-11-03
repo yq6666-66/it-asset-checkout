@@ -1,0 +1,31 @@
+@model Checkout
+@{
+    ViewData["Title"] = "Delete checkout";
+}
+
+<h1>Delete checkout</h1>
+<p>Delete the checkout for <strong>@Model.Asset?.Name</strong> (@Model.Asset?.TagNo) held by <strong>@Model.Staff?.FullName</strong>? This cannot be undone.</p>
+
+<dl class="detail">
+    <div>
+        <dt>Checkout date</dt>
+        <dd>@Model.CheckoutAt.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Due date</dt>
+        <dd>@Model.DueAt.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Return date</dt>
+        <dd>@(Model.ReturnAt is null ? "Open" : Model.ReturnAt.Value.ToString("yyyy-MM-dd"))</dd>
+    </div>
+    <div>
+        <dt>Note</dt>
+        <dd>@(string.IsNullOrWhiteSpace(Model.Note) ? "—" : Model.Note)</dd>
+    </div>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="form-actions">
+    <button type="submit" class="button danger">Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>

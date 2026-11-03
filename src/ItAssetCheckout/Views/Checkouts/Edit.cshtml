@@ -1,0 +1,15 @@
+@model Checkout
+@{
+    ViewData["Title"] = "Edit checkout";
+}
+
+<h1>Edit checkout</h1>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-card">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+    <partial name="_CheckoutForm" model="Model" />
+    <div class="form-actions">
+        <button type="submit" class="button">Save</button>
+        <a asp-action="Index">Cancel</a>
+    </div>
+</form>

@@ -1,0 +1,51 @@
+@model Asset
+@{
+    ViewData["Title"] = "Delete asset";
+}
+
+@{
+    var canDelete = ViewData["CanDelete"] as bool? ?? true;
+}
+
+<h1>Delete asset</h1>
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+@if (canDelete)
+{
+    <p>Delete <strong>@Model.Name</strong> (@Model.TagNo)? This cannot be undone.</p>
+}
+else
+{
+    <p>This asset has checkout records, so it cannot be deleted.</p>
+}
+
+<dl class="detail">
+    <div>
+        <dt>Category</dt>
+        <dd>@Model.Category</dd>
+    </div>
+    <div>
+        <dt>Status</dt>
+        <dd>@Model.Status</dd>
+    </div>
+    <div>
+        <dt>Purchase date</dt>
+        <dd>@Model.PurchaseDate.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Value</dt>
+        <dd>@Model.Value.ToString("0.00")</dd>
+    </div>
+</dl>
+
+<div class="form-actions">
+    @if (canDelete)
+    {
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            <button type="submit" class="button danger">Delete</button>
+        </form>
+    }
+    <a asp-action="Index">Back to assets</a>
+</div>

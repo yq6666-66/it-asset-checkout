@@ -1,0 +1,370 @@
+:root {
+    --brand-primary: #0e3a5d;
+    --brand-primary-dark: #0a2a44;
+    --brand-accent: #e8a04a;
+    --surface: #f4f7fa;
+    --card: #ffffff;
+    --text: #1c2833;
+    --muted: #5c6b7a;
+    --line: #d5dee6;
+    --danger: #9b2c2c;
+    --notice: #e7f4ec;
+    --notice-text: #145c38;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--surface);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--brand-primary);
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    background: var(--brand-primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+}
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+}
+
+.site-nav a,
+.account a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.site-nav a:hover,
+.account a:hover,
+.brand:hover {
+    color: var(--brand-accent);
+}
+
+.account {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.username {
+    font-weight: 700;
+}
+
+.link-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    border-color: var(--brand-accent);
+    color: var(--brand-accent);
+}
+
+.site-main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.site-footer {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.banner {
+    background: var(--brand-primary);
+    color: #fff;
+    border-radius: 12px;
+    padding: 2.25rem 2rem;
+    border-bottom: 6px solid var(--brand-accent);
+}
+
+.banner h1,
+.banner p {
+    margin: 0.35rem 0;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--brand-accent);
+    font-weight: 700;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.home-grid article,
+.form-card,
+.detail {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+}
+
+.home-grid h2 {
+    margin-top: 0;
+    color: var(--brand-primary);
+    font-size: 1.1rem;
+}
+
+.button {
+    display: inline-block;
+    background: var(--brand-primary);
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    border-radius: 8px;
+    padding: 0.55rem 0.95rem;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: var(--brand-primary-dark);
+    color: #fff;
+}
+
+.button.danger {
+    background: var(--danger);
+}
+
+.page-heading,
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+}
+
+.page-heading h1,
+h1 {
+    margin-top: 0;
+}
+
+.lede,
+.placeholder {
+    color: var(--muted);
+}
+
+.notice {
+    background: var(--notice);
+    color: var(--notice-text);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+}
+
+th {
+    background: #e7eef4;
+    color: var(--brand-primary-dark);
+    font-size: 0.85rem;
+}
+
+.num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.actions a + a {
+    margin-left: 0.6rem;
+}
+
+.status {
+    display: inline-block;
+    border-radius: 999px;
+    background: #e7eef4;
+    color: var(--brand-primary-dark);
+    padding: 0.1rem 0.55rem;
+    font-size: 0.85rem;
+}
+
+.form-card {
+    max-width: 36rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.9rem;
+}
+
+.field input,
+.field select {
+    font: inherit;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.field.check {
+    flex-direction: row;
+    align-items: center;
+}
+
+.field-validation-error,
+.validation-summary-errors {
+    color: var(--danger);
+    font-size: 0.9rem;
+}
+
+.validation-summary-errors ul {
+    margin: 0 0 0.8rem;
+    padding-left: 1.1rem;
+}
+
+.input-validation-error {
+    border-color: var(--danger) !important;
+}
+
+.detail {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 36rem;
+}
+
+.detail dt {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.detail dd {
+    margin: 0;
+    font-weight: 650;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: flex-end;
+    margin: 0 0 1rem;
+}
+
+.filters label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.filters input,
+.filters select {
+    font: inherit;
+    color: var(--text);
+    min-width: 12rem;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.status-open {
+    background: #fff4e0;
+    color: #8a4b08;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.command {
+    background: var(--brand-primary-dark);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    overflow-x: auto;
+}
+
+textarea {
+    font: inherit;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+}
+
+@media (max-width: 640px) {
+    .site-header {
+        align-items: flex-start;
+    }
+
+    .account {
+        margin-left: 0;
+    }
+
+    .banner {
+        padding: 1.5rem 1.1rem;
+    }
+}

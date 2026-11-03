@@ -1,0 +1,32 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+<h1>Login</h1>
+<p class="lede">Demo environment only. Use the account documented in the README.</p>
+
+<form asp-action="Login" method="post" class="form-card">
+    <input type="hidden" name="returnUrl" value="@returnUrl" />
+    <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+    <div class="field">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" autocomplete="username" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" autocomplete="current-password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="field check">
+        <label>
+            <input asp-for="RememberMe" />
+            @Html.DisplayNameFor(model => model.RememberMe)
+        </label>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="button">Login</button>
+    </div>
+</form>

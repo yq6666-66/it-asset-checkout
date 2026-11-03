@@ -1,0 +1,38 @@
+@model Checkout
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="page-heading">
+    <h1>Checkout</h1>
+    <a class="button" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>
+
+<dl class="detail">
+    <div>
+        <dt>Asset</dt>
+        <dd>@Model.Asset?.TagNo — @Model.Asset?.Name</dd>
+    </div>
+    <div>
+        <dt>Staff member</dt>
+        <dd>@Model.Staff?.StaffCode — @Model.Staff?.FullName</dd>
+    </div>
+    <div>
+        <dt>Checkout date</dt>
+        <dd>@Model.CheckoutAt.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Due date</dt>
+        <dd>@Model.DueAt.ToString("yyyy-MM-dd")</dd>
+    </div>
+    <div>
+        <dt>Return date</dt>
+        <dd>@(Model.ReturnAt is null ? "Open" : Model.ReturnAt.Value.ToString("yyyy-MM-dd"))</dd>
+    </div>
+    <div>
+        <dt>Note</dt>
+        <dd>@(string.IsNullOrWhiteSpace(Model.Note) ? "—" : Model.Note)</dd>
+    </div>
+</dl>
+
+<p><a asp-action="Index">Back to checkouts</a></p>

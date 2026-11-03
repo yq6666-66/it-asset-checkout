@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+  <rect width="720" height="420" fill="#ffffff"/>
+  <text x="36" y="36" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#0e3a5d">Sprint 1 burndown</text>
+  <text x="36" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#5c6b7a">Stories remaining. Ideal line uses the 2026-11-03 to 2026-11-04 window.</text>
+  <line x1="80" y1="80" x2="80" y2="320" stroke="#0e3a5d" stroke-width="2"/>
+  <line x1="80" y1="320" x2="640" y2="320" stroke="#0e3a5d" stroke-width="2"/>
+  <text x="28" y="324" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#5c6b7a">0</text>
+  <text x="28" y="204" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#5c6b7a">4</text>
+  <text x="28" y="84" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#5c6b7a">8</text>
+  <text x="70" y="348" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#1c2833">2026-11-03 start</text>
+  <text x="300" y="348" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#1c2833">2026-11-03 end</text>
+  <text x="520" y="348" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#1c2833">2026-11-04</text>
+  <line x1="120" y1="80" x2="600" y2="320" stroke="#7d8b99" stroke-width="2" stroke-dasharray="6 4"/>
+  <polyline points="120,80 360,320 600,320" fill="none" stroke="#0e3a5d" stroke-width="3"/>
+  <circle cx="120" cy="80" r="5" fill="#0e3a5d"/>
+  <circle cx="360" cy="320" r="5" fill="#0e3a5d"/>
+  <circle cx="600" cy="320" r="5" fill="#0e3a5d"/>
+  <text x="80" y="390" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#5c6b7a">Dashed: ideal, 8 stories down to 0 across the two-day window.</text>
+  <text x="80" y="410" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#0e3a5d">Solid: actual. All 8 stories were finished on 2026-11-03, so remaining is 0 from that evening.</text>
+</svg>

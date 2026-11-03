@@ -1,0 +1,31 @@
+@model IReadOnlyList<UnitTestCase>
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h1>Test</h1>
+<p>These unit tests live in <code>tests/ItAssetCheckout.Tests</code>. Run them from the repository root:</p>
+<pre class="command">dotnet test</pre>
+<p class="placeholder">The page lists the cases. It does not run them.</p>
+
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Case</th>
+                <th>xUnit method</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var test in Model)
+            {
+                <tr>
+                    <td>@test.Id</td>
+                    <td>@test.Name</td>
+                    <td><code>@test.Method</code></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

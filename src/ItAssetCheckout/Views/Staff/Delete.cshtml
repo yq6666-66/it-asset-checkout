@@ -1,0 +1,40 @@
+@model Staff
+@{
+    ViewData["Title"] = "Delete staff member";
+    var canDelete = ViewData["CanDelete"] as bool? ?? true;
+}
+
+<h1>Delete staff member</h1>
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+@if (canDelete)
+{
+    <p>Delete <strong>@Model.FullName</strong> (@Model.StaffCode)? This cannot be undone.</p>
+}
+else
+{
+    <p>This staff member has checkout records, so they cannot be deleted.</p>
+}
+
+<dl class="detail">
+    <div>
+        <dt>Email</dt>
+        <dd>@Model.Email</dd>
+    </div>
+    <div>
+        <dt>Department</dt>
+        <dd>@Model.Department</dd>
+    </div>
+</dl>
+
+<div class="form-actions">
+    @if (canDelete)
+    {
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            <button type="submit" class="button danger">Delete</button>
+        </form>
+    }
+    <a asp-action="Index">Back to staff</a>
+</div>

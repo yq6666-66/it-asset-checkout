@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - IT Asset Checkout</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="icon" href="~/images/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" asp-controller="Home" asp-action="Index">
+            <img src="~/images/logo.svg" alt="IT Asset Checkout logo" width="36" height="36" />
+            <span>IT Asset Checkout</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Assets" asp-action="Index">Assets</a>
+            <a asp-controller="Staff" asp-action="Index">Staff</a>
+            <a asp-controller="Checkouts" asp-action="Index">Checkouts</a>
+            <a asp-controller="Test" asp-action="Index">Test</a>
+        </nav>
+        <div class="account">
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <span class="username">@User.Identity.Name</span>
+                <form asp-controller="Account" asp-action="Logout" method="post">
+                    <button type="submit" class="link-button">Logout</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login">Login</a>
+            }
+        </div>
+    </header>
+    <main class="site-main">
+        @RenderBody()
+    </main>
+    <footer class="site-footer">
+        <p>IT Asset Checkout — custom equipment tracking scenario.</p>
+    </footer>
+</body>
+</html>

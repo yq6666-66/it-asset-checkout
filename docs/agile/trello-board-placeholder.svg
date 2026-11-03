@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320">
+  <rect width="960" height="320" fill="#f4f7fa"/>
+  <rect x="24" y="24" width="288" height="272" rx="12" fill="#e7eef4"/>
+  <rect x="336" y="24" width="288" height="272" rx="12" fill="#e7eef4"/>
+  <rect x="648" y="24" width="288" height="272" rx="12" fill="#e7eef4"/>
+  <text x="40" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#0e3a5d">Backlog</text>
+  <text x="352" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#0e3a5d">Doing</text>
+  <text x="664" y="64" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#0e3a5d">Done</text>
+  <text x="40" y="180" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5c6b7a">Replace this file with a</text>
+  <text x="40" y="206" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5c6b7a">screenshot of the real board</text>
+  <text x="40" y="232" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#5c6b7a">after the human PO invite.</text>
+</svg>
