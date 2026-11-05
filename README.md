@@ -1,6 +1,10 @@
-# IT Asset Checkout
+# Secure Agile Web Development Project
 
-IT Asset Checkout is a custom web application for recording equipment and the people who borrow it. This is a custom IT Asset Checkout scenario, not a course sample. Staff hold the people. A Checkout links one asset to one staff member, and an asset can have only one open checkout (a row whose return date is empty). The stack is ASP.NET Core 8 with cookie Identity. Local and development runs use SQLite so the app starts without a database server. The production and demo target is SQL Server. The provider is switchable: set `DatabaseProvider` to `SqlServer` and point `ConnectionStrings:DefaultConnection` at SQL Server.
+SD6503 Testing and Secure Coding · 2026 Final Project
+
+The chosen business scenario is **IT Asset Checkout** (ASP.NET Core 8 + cookie Identity). It is a custom equipment-loan application, not a course sample. Staff hold the people. A Checkout links one asset to one staff member, and an asset can have only one open checkout (a row whose return date is empty). Local and development runs use SQLite so the app starts without a database server. The production and demo target is SQL Server. The provider is switchable: set `DatabaseProvider` to `SqlServer` and point `ConnectionStrings:DefaultConnection` at SQL Server. Create and edit paths enforce required fields, email format, duplicate tag numbers and staff codes, a due date on or after the checkout date, and a single open checkout per asset.
+
+The intended public repository name is `sd6503-secure-agile-web`. This checkout's GitHub repository is `yq6666-66/it-asset-checkout`. Solution, project, and folder names stay `ItAssetCheckout` (`ItAssetCheckout.sln`, `src/ItAssetCheckout`).
 
 ## Screenshots
 
@@ -34,33 +38,43 @@ Selenium UI evidence is the signed-in home, Assets, Checkouts, and Staff shots. 
 
 *JMeter dashboard from the recorded run under `docs/performance/`.*
 
-## How this delivery was built
+## How this delivery maps to the assessment
 
-The repository is meant to show a full secure-and-agile web delivery, not only a runnable app. The sections below map each practice to the evidence already in the tree.
+The list below maps this tree to the main objectives and deliverables in the SD6503 brief. Each item points at evidence already in the repository. It does not record a mark or a lecturer sign-off.
 
-### 1. Agile delivery
+The testing documents include an IEEE 829 test plan at `docs/testing/ieee-829-test-plan.md`.
 
-User stories, MoSCoW prioritisation, and sprint notes live under `docs/agile/`. Sprint tracking on Trello is documented in `docs/agile/trello.md`, including the human steps to keep the board in sync with the written sprint notes.
+### 1. Black-box testing
 
-### 2. Testing (STLC-style)
+Maps to `docs/testing/black-box.md` (signed-in list pages, search, and the asset–staff relation on checkout rows).
 
-Unit cases run with `dotnet test` (UT-01 through UT-05). Selenium browser cases stay skipped unless the site is already running and `RUN_SELENIUM=1` is set. The commands, case tables, and IEEE 829 plan plus write-ups are under `docs/testing/`. Those write-ups cover black-box, white-box, and grey-box approaches where the testing pack already does. The in-app Test page lists UT-01 through UT-05 for a quick walkthrough.
+### 2. White-box testing
 
-### 3. Performance
+Maps to `docs/testing/white-box.md` (validation messages and boundary inputs).
 
-The JMeter plan and a recorded run live under `docs/performance/`.
+### 3. Grey-box testing (unit tests and the Test page)
 
-### 4. Security
+Maps to `docs/testing/unit-tests.md` (UT-01 through UT-05), the public page `/Test`, and `dotnet test`. Screenshots: `docs/testing/screenshots/test-page.png` and `docs/testing/screenshots/unit-tests-pass.png`.
 
-Static analysis notes and an OWASP map live under `docs/security/`. Cookie Identity protects the registers. Create and edit paths enforce required fields, email format, duplicate tag numbers and staff codes, a due date on or after the checkout date, and a single open checkout per asset.
+### 4. Automation testing (Selenium WebDriver)
 
-### 5. Demonstration
+Maps to `docs/testing/selenium.md` and the recorded run in `docs/testing/selenium-run.md`. Screenshots from that run are under `docs/testing/selenium/screenshots/`.
 
-The English PowerPoint deck is `presentation/IT-Asset-Checkout-demo-deck.pptx`. Slide 5 embeds the main live-path demo clip (English narration, target length at most about 180 seconds). Slide 7 embeds the step-8 / Selenium path clip (English narration). Open the file in PowerPoint or a compatible viewer; the videos play from those slides. How the deck was assembled, the slide map, and the embedded media checksums are in `presentation/README.md`. Supporting process write-ups remain under `docs/` so the talk track and the evidence pack stay aligned.
+### 5. Static code analysis
 
-### 6. Local run and demo account
+Maps to `docs/security/security-code-scan.md`. The OWASP Top 10 map is `docs/security/owasp-top-10.md`.
 
-Run steps and demo sign-in through `.env` / `DEMO_ADMIN_PASSWORD` are in the sections below. Do not put a real password in the repository or in this README.
+### 6. Web performance and load testing (JMeter)
+
+Evidence under `docs/performance/`: the plan `it-asset-checkout.jmx`, the write-up `results-summary.md`, the dashboard `jmeter-dashboard.png`, and the recorded `results.jtl` and `statistics.json`.
+
+### 7. Agile (user stories, priority, sprints, Trello)
+
+Evidence under `docs/agile/`: user stories in `user-stories.md`, MoSCoW priority in `moscow.md`, sprint notes in `sprint-1.md`, `sprint-2.md`, and `sprint-3.md` (sprint 3 remains the skeleton in that file), and the Sprint 1 burndown chart `burndown-sprint1.svg`. Trello steps are in `trello.md`. A Product Owner invite and a Moodle upload pack are human steps outside this snapshot.
+
+### 8. Presentation
+
+The English deck is `presentation/IT-Asset-Checkout-demo-deck.pptx`. Slide 5 embeds the main live-path demo clip (English narration, target length at most about 180 seconds). Slide 7 embeds the step-8 / Selenium path clip (English narration). Open the file in PowerPoint or a compatible viewer; the videos play from those slides. How the deck was assembled, the slide map, and the embedded media checksums are in `presentation/README.md`.
 
 ## Run
 
@@ -79,7 +93,7 @@ With the default SQLite provider, on first run the app creates `src/ItAssetCheck
 
 Demo environment only. Do not use this account in production.
 
-The demo account is described in `.env.example`. Copy that file to `.env` (gitignored), set `DEMO_ADMIN_PASSWORD` locally, then export it before you run:
+Assessment sign-in uses the username and password in the local `.env` (see `.env.example` and the testing docs). Copy `.env.example` to `.env` (gitignored), set `DEMO_ADMIN_PASSWORD` locally, then export it before you run. Do not commit `.env`, and do not paste the password into this README.
 
 ```bash
 set -a
