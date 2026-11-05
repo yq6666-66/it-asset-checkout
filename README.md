@@ -36,10 +36,10 @@ Install the .NET 8 SDK, then from the repository root:
 
 ```bash
 dotnet restore
-dotnet run --project src/ItAssetCheckout
+ASPNETCORE_ENVIRONMENT=Development dotnet run --project src/ItAssetCheckout
 ```
 
-Open http://localhost:5080.
+Open http://localhost:5080. Setting `ASPNETCORE_ENVIRONMENT=Development` keeps `Demo:SeedUser` true so the demo account can be created when `DEMO_ADMIN_PASSWORD` is set.
 
 With the default SQLite provider, on first run the app creates `src/ItAssetCheckout/it-asset-checkout.db` and, when each table is empty, inserts six assets, six staff members, and six checkouts. One of those checkouts is open. If a SQLite database file from an earlier sample has no Staff or Checkouts table, startup recreates that file and seeds it again. Delete the file yourself when you want a clean seed.
 
@@ -53,7 +53,7 @@ The demo account is described in `.env.example`. Copy that file to `.env` (gitig
 set -a
 source .env
 set +a
-dotnet run --project src/ItAssetCheckout
+ASPNETCORE_ENVIRONMENT=Development dotnet run --project src/ItAssetCheckout
 ```
 
 The username defaults to `admin` when `DEMO_ADMIN_USER` is empty. The account is created only when `Demo:SeedUser` is `true` and `DEMO_ADMIN_PASSWORD` is set. `SeedUser` is `true` in `appsettings.Development.json` and `false` in `appsettings.json`. The password is not stored in appsettings.

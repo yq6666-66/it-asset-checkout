@@ -2,7 +2,7 @@
 
 This folder holds the English demonstration PowerPoint for the IT Asset Checkout delivery. The deck is the talk track for a live walkthrough. Written Agile, testing, security, and performance evidence stays under `docs/`; open those folders when a slide points at a plan, write-up, or board note.
 
-The file to open is `IT-Asset-Checkout-IT-Asset-Checkout-demo-deck.pptx` (SHA-256 `0150847b331d576e1cd4e3ada675c58dacfc4404a802ef8ba4e5d129342125b2`). Use Microsoft PowerPoint or a compatible viewer on your machine. Slides 5 and 7 contain embedded MP4 clips; play them from the slides. Do not speak or paste a plaintext demo password; the running app takes the demo password only from the environment variable `DEMO_ADMIN_PASSWORD` (see the repository root README and `.env.example`).
+The file to open is `IT-Asset-Checkout-demo-deck.pptx` (SHA-256 `0150847b331d576e1cd4e3ada675c58dacfc4404a802ef8ba4e5d129342125b2`). Prefer Microsoft PowerPoint desktop for the embedded MP4 clips on slides 5 and 7; other viewers may open the slides but skip video playback. Slides 5 and 7 contain embedded MP4 clips; play them from the slides. Do not speak or paste a plaintext demo password. `DEMO_ADMIN_PASSWORD` is only used to create the demo account on startup; sign in on the Login page with that password (see the repository root README and `.env.example`).
 
 ## How this deck was assembled
 
@@ -14,7 +14,7 @@ The embedded-video and English body gates, in order:
 2. **ppt-video-s2:** embed the step-8 / Selenium path English-narrated clip on slide 7.
 3. **ppt-video-s3:** Chinese body polish on other slides. That pass is **superseded** and is not the demonstration deck after the requirement that slide bodies stay English.
 4. **ppt-video-s4:** Englishize slides 1–2 (sample pass).
-5. **ppt-video-s5:** Englishize slides 3, 4, 6, 8, 9, and 10. Slides 5 and 7 (including embedded media) stay hard-kept from the prior embedded state. **s5 is the current demonstration deck** copied into this folder as `IT-Asset-Checkout-IT-Asset-Checkout-demo-deck.pptx`.
+5. **ppt-video-s5:** Englishize slides 3, 4, 6, 8, 9, and 10. Slides 5 and 7 (including embedded media) stay hard-kept from the prior embedded state. **s5 is the current demonstration deck** copied into this folder as `IT-Asset-Checkout-demo-deck.pptx`.
 
 Narration must match what is on screen, stay on the marking guide and learning outcomes, and avoid filler. Only the English-dubbed clips are embedded.
 
@@ -28,7 +28,7 @@ Narration must match what is on screen, stay on the marking guide and learning o
 | 6 | Testing evidence overview | English (from s5) |
 | 7 | Step-8 / Selenium path video (embedded) | Slide shell hard-kept; clip is English narration |
 | 8 | Security and static analysis | English (from s5) |
-| 9 | Agile / Trello | English body (from s5); the Trello screenshot is image media and may still show Chinese card titles (body text on the slide is English) |
+| 9 | Agile / Trello | English body (from s5); the Trello screenshot is image media and may still show Chinese card titles — accepted exception; slide body text is English and the board image is not rewritten in this gate |
 | 10 | FAQ | English (from s5) |
 
 ## Embedded clips
@@ -42,7 +42,7 @@ Narration must match what is on screen, stay on the marking guide and learning o
 
 | File | Role | SHA-256 |
 | --- | --- | --- |
-| `IT-Asset-Checkout-IT-Asset-Checkout-demo-deck.pptx` | Current English demonstration deck (video-s5) | `0150847b331d576e1cd4e3ada675c58dacfc4404a802ef8ba4e5d129342125b2` |
+| `IT-Asset-Checkout-demo-deck.pptx` | Current English demonstration deck (video-s5) | `0150847b331d576e1cd4e3ada675c58dacfc4404a802ef8ba4e5d129342125b2` |
 | `README.md` | This process note | — |
 
 ## Local run (optional mirror)
@@ -51,14 +51,14 @@ From the repository root, after the .NET 8 SDK is installed:
 
 ```bash
 dotnet restore
-dotnet run --project src/ItAssetCheckout
+ASPNETCORE_ENVIRONMENT=Development dotnet run --project src/ItAssetCheckout
 ```
 
-Open http://localhost:5080. Set `DEMO_ADMIN_PASSWORD` (and optionally `DEMO_ADMIN_USER`) via `.env` as described in the root README. Never put a plaintext demo password in this folder or in the deck.
+Open http://localhost:5080. Setting `ASPNETCORE_ENVIRONMENT=Development` keeps `Demo:SeedUser` true so the demo account can be created. Set `DEMO_ADMIN_PASSWORD` (and optionally `DEMO_ADMIN_USER`) via `.env` as described in the root README. Never put a plaintext demo password in this folder or in the deck.
 
 ## Suggested talk order
 
-1. Open `IT-Asset-Checkout-IT-Asset-Checkout-demo-deck.pptx` and walk slides 1–4 for context.
+1. Open `IT-Asset-Checkout-demo-deck.pptx` and walk slides 1–4 for context.
 2. On slide 5, play the embedded main-path clip; optionally mirror the same path with the Local run steps above.
 3. Use slides 6 and 8 with `docs/testing/` and `docs/security/` when you need the written evidence.
 4. On slide 7, play the embedded step-8 clip.
