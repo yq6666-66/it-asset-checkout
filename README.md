@@ -4,7 +4,7 @@ SD6503 Testing and Secure Coding · 2026 Final Project
 
 The chosen business scenario is **IT Asset Checkout** (ASP.NET Core 8 + cookie Identity). It is a custom equipment-loan application, not a course sample. Staff hold the people. A Checkout links one asset to one staff member, and an asset can have only one open checkout (a row whose return date is empty). Local and development runs use SQLite so the app starts without a database server. The production and demo target is SQL Server. The provider is switchable: set `DatabaseProvider` to `SqlServer` and point `ConnectionStrings:DefaultConnection` at SQL Server. Create and edit paths enforce required fields, email format, duplicate tag numbers and staff codes, a due date on or after the checkout date, and a single open checkout per asset.
 
-The intended public repository name is `sd6503-secure-agile-web`. This checkout's GitHub repository is `yq6666-66/it-asset-checkout`. Solution, project, and folder names stay `ItAssetCheckout` (`ItAssetCheckout.sln`, `src/ItAssetCheckout`).
+The GitHub repository is https://github.com/yq6666-66/sd6503-secure-agile-web. Solution, project, and folder names stay `ItAssetCheckout` (`ItAssetCheckout.sln`, `src/ItAssetCheckout`).
 
 ## Screenshots
 
