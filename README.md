@@ -62,6 +62,16 @@ Assets, Staff, and Checkouts require a signed-in user. Home, Login, and the Test
 
 Each list has a search box and a sort. Assets search tag number, name, category, or status. Staff search staff code, name, email, or department. Checkouts search asset, staff member, note, the word `open`, or a date written `yyyy-MM-dd`, and sort by checkout date, asset, staff, due date, or return date.
 
+## Windows
+
+`scripts/windows/` holds one-click launchers for a local demo on Windows. Each script starts in its own folder and walks up until it finds `ItAssetCheckout.sln`. Copy `.env.example` to `.env` and set `DEMO_ADMIN_PASSWORD` before the first launch. `.env` stays gitignored. The scripts load that file and do not contain a password.
+
+Double-click a `.bat` file. It starts Windows PowerShell 5.1 (`powershell.exe`) with `-ExecutionPolicy Bypass` and the matching `.ps1`.
+
+- `scripts/windows/Start-IT-Asset-Checkout.bat` restores the solution, starts the site at http://127.0.0.1:5080, and opens a browser. Close that window to stop the server.
+- `scripts/windows/Open-Slide7-Evidence.bat` is the slide-7 live order. It checks that the site is up, runs Selenium with `RUN_SELENIUM=1`, runs the JMeter plan (20 threads, about 60 seconds), stops ItAssetCheckout host processes that lock build outputs, then runs `dotnet clean` and `dotnet build` on `src/ItAssetCheckout`. Warning SCS0018 is expected, and the build should report 0 errors. It then opens the security notes, the Trello board, the OWASP map, and the agile notes, and waits for Enter between steps. JMeter is `%JMETER_HOME%\bin\jmeter.bat` when that file exists, otherwise `C:\Tools\apache-jmeter-5.6.3\bin\jmeter.bat`. The plan receives `-JdemoPassword` from the loaded `.env`.
+- `scripts/windows/Open-Test-Evidence.bat` opens the testing write-ups, Selenium screenshots, performance notes, and security notes already in the tree. It does not re-run those tools.
+
 ## Tests
 
 ```bash
@@ -92,6 +102,7 @@ docs/testing/                      IEEE 829 plan and the four test write-ups
 docs/security/                     Static analysis notes and the OWASP map
 docs/performance/                  JMeter plan and the recorded run
 docs/agile/                        Stories, MoSCoW, sprint notes, burndown, Trello checklist
+scripts/windows/                   Windows one-click launchers for the local demo
 presentation/                      English demo deck with embedded narration clips
 presentation/IT-Asset-Checkout-demo-deck.pptx        Current demonstration PowerPoint
 presentation/README.md             How the deck was built and how to open it
