@@ -2,6 +2,26 @@
 
 IT Asset Checkout is a custom web application for recording equipment and the people who borrow it. This is a custom IT Asset Checkout scenario, not a course sample. Staff hold the people. A Checkout links one asset to one staff member, and an asset can have only one open checkout (a row whose return date is empty). The stack is ASP.NET Core 8 with cookie Identity. Local and development runs use SQLite so the app starts without a database server. The production and demo target is SQL Server. The provider is switchable: set `DatabaseProvider` to `SqlServer` and point `ConnectionStrings:DefaultConnection` at SQL Server.
 
+## Screenshots
+
+The first three images are from the Selenium pack. The fourth is the JMeter HTML dashboard from the recorded run.
+
+![Signed-in home](docs/testing/selenium/screenshots/sel-01-login.png)
+
+*Signed-in home (file name `sel-01-login.png`): equipment desk, with the demo user and Logout in the header.*
+
+![Assets list](docs/testing/selenium/screenshots/sel-02-assets.png)
+
+*Assets list: search, sort by tag number, and the seeded equipment rows.*
+
+![Checkouts list](docs/testing/selenium/screenshots/sel-03-checkouts.png)
+
+*Checkouts list: one open checkout and the returned loans.*
+
+![JMeter dashboard from the recorded run](docs/performance/jmeter-dashboard.png)
+
+*JMeter dashboard from the recorded run under `docs/performance/`.*
+
 ## How this delivery was built
 
 The repository is meant to show a full secure-and-agile web delivery, not only a runnable app. The sections below map each practice to the evidence already in the tree.
