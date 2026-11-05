@@ -4,7 +4,7 @@ IT Asset Checkout is a custom web application for recording equipment and the pe
 
 ## Screenshots
 
-The first three images are from the Selenium pack. The fourth is the JMeter HTML dashboard from the recorded run.
+Selenium UI evidence is the signed-in home, Assets, Checkouts, and Staff shots. The Test page and the unit-test pass image are the in-app catalog and a `dotnet test` run. The last image is the JMeter HTML dashboard from the recorded run.
 
 ![Signed-in home](docs/testing/selenium/screenshots/sel-01-login.png)
 
@@ -17,6 +17,18 @@ The first three images are from the Selenium pack. The fourth is the JMeter HTML
 ![Checkouts list](docs/testing/selenium/screenshots/sel-03-checkouts.png)
 
 *Checkouts list: one open checkout and the returned loans.*
+
+![Staff list](docs/testing/selenium/screenshots/sel-04-staff.png)
+
+*Staff list (SEL-04): search, sort by staff code, and the seeded people rows.*
+
+![Test page](docs/testing/screenshots/test-page.png)
+
+*Public Test page at /Test: the catalog of unit cases UT-01 through UT-05.*
+
+![Unit tests passed](docs/testing/screenshots/unit-tests-pass.png)
+
+*Unit-test run: dotnet test on the unit project, with UT-01 through UT-05 passed.*
 
 ![JMeter dashboard from the recorded run](docs/performance/jmeter-dashboard.png)
 
