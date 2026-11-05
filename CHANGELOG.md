@@ -12,6 +12,7 @@ All notable changes to this project are recorded here.
 
 ### Changed
 
+- Root `README.md` was reframed for the SD6503 Secure Agile Web Development Project naming; the scenario remains IT Asset Checkout. The opening paragraph of `docs/README.md` uses the same title and scenario.
 - Root `README.md`: Screenshots gained testing evidence (public Test page, unit-test pass, and SEL-04 Staff).
 - Root `README.md`: Screenshots section added with the signed-in home, Assets list, Checkouts list, and the recorded JMeter dashboard.
 - Root `README.md`: Windows section points at `scripts/windows/`, and the folder layout lists that directory.
