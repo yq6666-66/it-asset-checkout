@@ -12,6 +12,7 @@ All notable changes to this project are recorded here.
 
 ### Changed
 
+- Root `README.md`: Screenshots gained testing evidence (public Test page, unit-test pass, and SEL-04 Staff).
 - Root `README.md`: Screenshots section added with the signed-in home, Assets list, Checkouts list, and the recorded JMeter dashboard.
 - Root `README.md`: Windows section points at `scripts/windows/`, and the folder layout lists that directory.
 - Root `README.md`: Folder layout and demonstration sections now point at the deck in `presentation/`; placeholder “Reserved for a later deck” wording removed. “Still later” no longer claims the deck is missing.
